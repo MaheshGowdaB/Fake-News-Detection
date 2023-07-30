@@ -2,27 +2,64 @@
 <html>
 <head>
     <title>Fake News Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-top: 30px;
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+        }
+        textarea {
+            width: 50%;
+            padding: 10px;
+            font-size: 14px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-top: 30px;
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            text-align: center;
+        }
+        strong {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
     <h1>Fake News Detection</h1>
-    <form method="POST" action="/predict">
-        <label for="news">Enter the news article:</label><br>
-        <textarea id="news" name="content" rows="4" cols="50"></textarea><br><br>
-        <input type="submit" value="Submit">
+    <form action="/predict" method="post">
+        <label for="news_text">Enter the news text:</label><br>
+        <textarea id="news_text" name="news_text" rows="6" cols="60" placeholder="Enter your news here..."></textarea><br>
+        <input type="submit" value="Predict">
     </form>
-
     {% if prediction %}
-    <h2>Prediction: {{ prediction }}</h2>
-    {% endif %}
-
-    {% if confusion_matrix_image %}
-    <h2>Confusion Matrix:</h2>
-    <img src="data:image/png;base64,{{ confusion_matrix_image }}" alt="Confusion Matrix">
-    {% endif %}
-
-    {% if learning_curve_image %}
-    <h2>Learning Curve:</h2>
-    <img src="data:image/png;base64,{{ learning_curve_image }}" alt="Learning Curve">
+    <h2>Prediction:</h2>
+    <p>The news is <strong>{{ prediction }}</strong>.</p>
     {% endif %}
 </body>
 </html>
