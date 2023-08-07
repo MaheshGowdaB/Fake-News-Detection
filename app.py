@@ -36,7 +36,7 @@ news_dataset['content'] = news_dataset['content'].apply(stemming)
 
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(X)
-
+#Logistic Regression Model
 model = LogisticRegression()
 model.fit(X, Y)
 
