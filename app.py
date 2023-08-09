@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 stop_words = stopwords.words('english')
 
-# Load the trained model and vectorizer
+# Load the trained model and vectorizer.
 news_dataset = pd.read_csv('C:/Users/LENOVO/Documents/Fake_News_Detection/train.csv')
 news_dataset = news_dataset.fillna('')
 news_dataset['content'] = news_dataset['author'] + ' ' + news_dataset['title']
